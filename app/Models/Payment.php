@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Payment extends BaseModel
 {
@@ -38,5 +39,10 @@ class Payment extends BaseModel
     public function bidder(): BelongsTo
     {
         return $this->belongsTo(Bidder::class, 'bidder', 'name_slug');
+    }
+
+    public function directions(): BelongsToMany
+    {
+        return $this->belongsToMany(Direction::class);
     }
 }
