@@ -4,16 +4,24 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use EloquentFilter\Filterable;
+use Illuminate\Auth\MustVerifyEmail;
+use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use \Illuminate\Auth\Authenticatable,
+        Authorizable,
+        CanResetPassword,
+        MustVerifyEmail,
+        HasFactory, Notifiable;
     use Filterable;
-    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
