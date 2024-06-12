@@ -2,7 +2,7 @@
     <div class="login-container">
         <div class="login-content">
 
-<!--            <img alt="FopLop" />-->
+            <!--            <img alt="FopLop" />-->
 
             <div class="login-form">
                 <input
@@ -27,14 +27,14 @@
                 <button
                     type="submit"
                 >
-                    Войти
+                    Зарегистрироваться
                     <font-awesome-icon :icon="['fas', 'arrow-right']" />
                 </button>
 
 
             </div>
             <span>
-                <a href="/register">Зарегистрироваться</a>
+                <a href="/login">Войти</a>
             </span>
         </div>
     </div>

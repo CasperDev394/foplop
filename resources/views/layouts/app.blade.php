@@ -21,6 +21,7 @@
 </head>
 <body>
     <div id="app">
+        <router-view />
         <main class="main">
             @yield('content')
         </main>

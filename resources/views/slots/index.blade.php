@@ -4,7 +4,7 @@
 
     @include('header')
 
-    <home></home>
+    <slots></slots>
 
     @include('footer')
 

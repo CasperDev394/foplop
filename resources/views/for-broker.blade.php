@@ -4,7 +4,7 @@
 
     @include('header')
 
-    <home></home>
+    <for-broker></for-broker>
 
     @include('footer')
 

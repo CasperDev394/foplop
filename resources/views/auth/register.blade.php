@@ -5,10 +5,10 @@
     @include('header')
 
     <div class="container page">
-        <div class="login-container">
-            <form method="POST" action="{{ route('login') }}">
+        <div class="register-container">
+            <form method="POST" action="{{ route('register') }}">
                 @csrf
-                <login></login>
+                <register></register>
             </form>
         </div>
     </div>

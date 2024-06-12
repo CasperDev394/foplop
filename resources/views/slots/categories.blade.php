@@ -4,7 +4,7 @@
 
     @include('header')
 
-    <home></home>
+    <categories></categories>
 
     @include('footer')
 
