@@ -7,7 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Laravel</title>
+    <title>{{$title ?? 'FopLop - торги по банкродству'}}</title>
+    <meta name="description" content="{{$description??'FopLop - торги по банкродству'}}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">

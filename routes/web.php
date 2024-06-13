@@ -9,6 +9,8 @@ Route::view('register', 'auth.register')->name('register');
 Route::view('login', 'auth.login')->name('login');
 Route::post('login',  [LoginController::class, 'login']);
 
+Route::get('logout',  [LoginController::class, 'logout'])->name('logout');
+
 
 Route::view('slots', 'slots.index')->name('slots');
 

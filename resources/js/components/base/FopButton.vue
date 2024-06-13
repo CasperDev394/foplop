@@ -63,6 +63,28 @@ const props = defineProps({
             opacity: 0.7;
         }
     }
+    &.negate{
+        border: solid $color-primary-negate 1px;
+        color: $color-primary-negate;
+        /*box-shadow: 0 1px 6px 0 rgb(187, 187, 187);*/
+
+        transition: 0.2s;
+
+        &:hover{
+            background-color: $color-primary-negate;
+            color: white;
+            opacity: 0.7;
+        }
+        &.hover{
+            background-color: $color-primary-negate;
+            color: white;
+            opacity: 0.7;
+
+            &:hover{
+                background-color: $color-primary-negate;
+            }
+        }
+    }
     /*
     &.delete {
         background-color: #ffffff;

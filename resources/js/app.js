@@ -2,6 +2,7 @@ import './bootstrap';
 
 import { createApp } from 'vue';
 import { createPinia } from 'pinia'
+import naive from "naive-ui";
 
 const pinia = createPinia()
 const app = createApp({});
@@ -9,7 +10,20 @@ const app = createApp({});
 /* import the fontawesome */
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faUserSecret, faPaperclip, faXmark, faTrash, faArrowRight, faPaperPlane, faCheckDouble, faFile, faBars, faArrowLeft, faPlay } from '@fortawesome/free-solid-svg-icons'
+import {
+    faUserSecret,
+    faPaperclip,
+    faXmark,
+    faTrash,
+    faArrowRight,
+    faPaperPlane,
+    faCheckDouble,
+    faFile,
+    faBars,
+    faArrowLeft,
+    faPlay,
+    faRightFromBracket,
+} from '@fortawesome/free-solid-svg-icons'
 library.add(faUserSecret)
 library.add(faXmark)
 library.add(faTrash)
@@ -21,6 +35,7 @@ library.add(faFile)
 library.add(faBars)
 library.add(faArrowLeft)
 library.add(faPlay)
+library.add(faRightFromBracket)
 
 
 import Login from './pages/auth/login.vue';
@@ -39,6 +54,9 @@ import AdminProfile from './pages/admin/Profile.vue';
 import Sidebar from './components/Sidebar.vue';
 import HeaderApp from './components/core/Header.vue';
 import FooterApp from './components/core/Footer.vue';
+
+
+import HeaderLk from './components/lk/core/Header.vue';
 
 
 import FopButton from './components/base/FopButton.vue';
@@ -72,10 +90,14 @@ app
     .component('Sidebar', Sidebar)
     .component('HeaderApp', HeaderApp)
     .component('FooterApp', FooterApp)
+
+    .component('HeaderLk', HeaderLk)
+
     .component('FopButton', FopButton)
     .component('font-awesome-icon', FontAwesomeIcon)
 
 
 app.use(pinia)
 app.use(router)
+app.use(naive)
 app.mount('#app');

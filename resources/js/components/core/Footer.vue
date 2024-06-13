@@ -61,6 +61,10 @@ import {useRoute} from "vue-router";
 
     box-shadow: inset 0 42px 50px -54px rgba(0,0,0,0.75);
 
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
     & .info-foplop{
         margin-top: 32px;
         color: $text-gray-1;
