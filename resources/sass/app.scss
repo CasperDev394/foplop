@@ -43,13 +43,7 @@ body {
 }
 .page {
     margin-top: 63px;
-}
-.lk-container-page {
-    margin: 0 auto;
-    max-width: 1500px;
-    padding: 63px 10px 10px 240px;
-    /*position: relative;*/
-    width: 100%;
+    flex: 1 0 auto;
 }
 
 h1 {
@@ -86,6 +80,10 @@ h2 {
         color: $color-primary-2;
         border-bottom: solid $color-primary-2 1px;
     }
+}
+
+.href-icon{
+    color: $color-primary-2;
 }
 
 .text-href-negate{

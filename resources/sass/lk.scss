@@ -1,0 +1,120 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+.lk-container-page {
+    margin: 0 auto;
+    max-width: 1500px;
+    padding: 63px 10px 10px 240px;
+    /*position: relative;*/
+    width: 100%;
+}
+
+.table-manager-panel{
+    margin: 16px 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.page-manager-panel {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 16px 0;
+
+    & .left-panel, .right-panel{
+        display: flex;
+        align-items: flex-start;
+        /*flex: 50%;*/
+
+        & button {
+            /*margin-top: 7px;*/
+        }
+    }
+    & .left-panel{
+        flex: 60%;
+    }
+    & .right-panel{
+        justify-content: flex-end;
+        flex: 40%;
+
+        & .panel-column{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+            & button {
+                /*margin: 5px;*/
+                width: 100%
+            }
+        }
+    }
+
+    & button {
+        margin-right: 20px;
+    }
+}
+
+.page-wrapper{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 100px;
+
+    align-items: flex-start;
+}
+
+.yolo-table {
+    & div.vue3-easy-data-table__main{
+        min-height: 80vh;
+    }
+
+    .row-sub-separator{
+        margin: 0;
+        width: 300px;
+        color: gray;
+    }
+}
+.text-table{
+    font-family: revert;
+    color: $text-black;
+    font-size: 14px;
+    margin: 0;
+}
+.text-table-blue-b{
+    font-family: revert;
+    color: #154a8e;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+}
+.text-table-green{
+    color: #456c35;
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: revert;
+}
+.text-table-red{
+    color: #6c3535;
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: revert;
+}
+.text-table-big{
+    font-family: revert;
+    color: $text-black;
+    font-size: 21px;
+    margin: 0;
+    text-decoration: none;
+}
+
+.customize-table{
+    --easy-table-header-font-color: #154a8e;
+    --easy-table-header-background-color: #b3cdee;
+
+    --easy-table-header-item-padding: 5px;
+}

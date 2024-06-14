@@ -22,6 +22,9 @@ class SideBarFactory
         ['text' => 'Лоты', 'href' => '/slots', 'icon' => '',
             'perm'=>['ADMIN']],
 
+        ['text' => 'Должники', 'href' => '/debtors', 'icon' => '',
+            'perm'=>['ADMIN']],
+
 
     ];
 

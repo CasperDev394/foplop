@@ -4,6 +4,9 @@ import { createApp } from 'vue';
 import { createPinia } from 'pinia'
 import naive from "naive-ui";
 
+import Vue3EasyDataTable from 'vue3-easy-data-table';
+import 'vue3-easy-data-table/dist/style.css';
+
 const pinia = createPinia()
 const app = createApp({});
 
@@ -23,6 +26,9 @@ import {
     faArrowLeft,
     faPlay,
     faRightFromBracket,
+    faLinesLeaning,
+    faFloppyDisk,
+    faPenToSquare,
 } from '@fortawesome/free-solid-svg-icons'
 library.add(faUserSecret)
 library.add(faXmark)
@@ -36,6 +42,9 @@ library.add(faBars)
 library.add(faArrowLeft)
 library.add(faPlay)
 library.add(faRightFromBracket)
+library.add(faLinesLeaning)
+library.add(faFloppyDisk)
+library.add(faPenToSquare)
 
 
 import Login from './pages/auth/login.vue';
@@ -50,6 +59,10 @@ import Categories from './pages/Categories.vue';
 import ForBroker from './pages/ForBroker.vue';
 
 import AdminProfile from './pages/admin/Profile.vue';
+import AdminSlots from './pages/admin/slots/Slots.vue';
+import AdminSlot from './pages/admin/slots/Slot.vue';
+import AdminDebtors from './pages/admin/debtors/Debtors.vue';
+import AdminDebtor from './pages/admin/debtors/Debtor.vue';
 
 import Sidebar from './components/Sidebar.vue';
 import HeaderApp from './components/core/Header.vue';
@@ -86,6 +99,10 @@ app
     .component('Register', Register)
 
     .component('AdminProfile', AdminProfile)
+    .component('AdminSlots', AdminSlots)
+    .component('AdminSlot', AdminSlot)
+    .component('AdminDebtors', AdminDebtors)
+    .component('AdminDebtor', AdminDebtor)
 
     .component('Sidebar', Sidebar)
     .component('HeaderApp', HeaderApp)
@@ -95,6 +112,7 @@ app
 
     .component('FopButton', FopButton)
     .component('font-awesome-icon', FontAwesomeIcon)
+    .component('data-table', Vue3EasyDataTable)
 
 
 app.use(pinia)
