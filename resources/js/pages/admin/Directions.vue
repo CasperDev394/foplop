@@ -1,6 +1,6 @@
 <template>
     <div class="lk-container-page">
-        <AdminCourtDialog @update-data="updateTable" ref="adminCourtDialog"/>
+        <AdminDirectionDialog @update-data="updateTable" ref="adminDirectionDialog" />
         <div class="table-manager-panel">
             <FopButton
                 fop_type="primary"
@@ -8,7 +8,7 @@
             >
                 <font-awesome-icon :icon="['fas', 'fa-lines-leaning']"  />
                 &nbsp;&nbsp;
-                Добавить суд
+                Добавить направление
             </FopButton>
         </div>
         <data-table
@@ -25,17 +25,16 @@
                 <div class="filter-column">
                     {{ header.text }}
                     <div class="filter-input"><n-config-provider :theme-overrides="themeOverrides">
-                            <n-input
-                                style="width: 300px"
-                                placeholder="поиск..."
-                                size="small"
-                                v-model:value="nameCriteria"
-                            />
-                        </n-config-provider>
+                        <n-input
+                            style="width: 300px"
+                            placeholder="поиск..."
+                            size="small"
+                            v-model:value="nameCriteria"
+                        />
+                    </n-config-provider>
                     </div>
                 </div>
             </template>
-
 
             <template #item-name="item">
                 <p class="text-table-big">{{item.name}}</p>
@@ -56,11 +55,11 @@
 <script setup>
 import DataTable from "vue3-easy-data-table";
 import {computed, ref, watch} from "vue";
-import {useCourtsStore} from "@/stores/admin/courts.ts";
+import {useDirectionsStore} from "@/stores/admin/directions.ts";
 import themeOverrides from "@/mixins/themeOverrides.js";
 
 
-const adminCourtDialog = ref();
+const adminDirectionDialog = ref();
 const nameCriteria = ref('');
 const items = ref([]);
 const loading = ref(true)
@@ -79,11 +78,11 @@ const filterOptions = computed(() => {
     return filterOptionsArray;
 })
 
-useCourtsStore().getCourts()
+useDirectionsStore().getDirections()
 watch(
-    [useCourtsStore()],
+    [useDirectionsStore()],
     () => {
-        items.value = useCourtsStore().$state.data
+        items.value = useDirectionsStore().$state.data
         loading.value = false
     },
     { deep: true }
@@ -92,17 +91,19 @@ watch(
 
 
 const openDialogCreate = () =>{
-    adminCourtDialog.value.show()
+    adminDirectionDialog.value.show()
 }
 const openDialogEdit = (item) =>{
-    adminCourtDialog.value.show(item)
+    adminDirectionDialog.value.show(item)
 }
 const updateTable = () => {
-    useCourtsStore().getCourts()
+    useDirectionsStore().getDirections()
 }
+
 
 </script>
 <style lang="scss" scoped>
 @import '/resources/sass/_variables.scss';
 
 </style>
+

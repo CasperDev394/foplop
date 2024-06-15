@@ -1,18 +1,18 @@
 <template>
     <fop-dialog
         ref="dialog"
-        :id="'AdminCourt'"
+        :id="'AdminDirection'"
         @hidden="resetData"
     >
         <fieldset>
-            <legend>Суд</legend>
+            <legend>Направление</legend>
 
             <n-config-provider style="margin-bottom: 32px; margin-top: 16px" :theme-overrides="themeOverrides">
                 <n-input
                     style="max-width: 90%"
                     placeholder="Название"
                     size="large"
-                    v-model:value="court.name"
+                    v-model:value="direction.name"
 
                     required
                 />
@@ -20,7 +20,7 @@
 
         </fieldset>
         <template #footer>
-            <div class="court-manager-panel">
+            <div class="direction-manager-panel">
                 <fop-button
                     fop_type="primary"
                     @click="save"
@@ -30,7 +30,7 @@
                     Сохранить
                 </fop-button>
                 <fop-button
-                    v-if="court.id"
+                    v-if="direction.id"
                     fop_type="delete"
                     @click="remove"
                 >
@@ -51,24 +51,24 @@ import {helpers, required} from "@vuelidate/validators";
 
 const dialog = ref(null)
 
-const court = ref({
+const direction = ref({
     id: null,
     name: '',
 })
 
 const rules = {
-    court:{
+    direction:{
         name: {
             required: helpers.withMessage('Обязательное поле', required)
         },
     }
 }
 
-const validator = useVuelidate(rules, {court})
+const validator = useVuelidate(rules, {direction})
 const emit = defineEmits(['updateData'])
 
 const resetData = () => {
-    court.value = {
+    direction.value = {
         id: null,
         name: '',
     }
@@ -78,23 +78,23 @@ const save = () => {
     if (validator.value.$silentErrors.length) {
         return;
     }
-    if (court.value.id) {
-        axios.post("/admin/courts/" + court.value.name_slug + '/update', court.value)
+    if (direction.value.id) {
+        axios.post("/admin/directions/" + direction.value.name_slug + '/update', direction.value)
     } else {
-        axios.post("/admin/courts/create", court.value)
+        axios.post("/admin/directions/create", direction.value)
     }
     hide()
 }
 
 const remove = () => {
-    axios.delete("/admin/courts/" + court.value.name_slug + '/delete')
+    axios.delete("/admin/directions/" + direction.value.name_slug + '/delete')
     hide()
 }
 
 const show = (item = null) => {
     dialog.value?.show()
     if(item){
-        court.value = item
+        direction.value = item
     }
 }
 const hide = () => {
@@ -108,7 +108,7 @@ defineExpose({ show, hide });
 <style lang="scss" scoped>
 @import '/resources/sass/_variables.scss';
 
-.court-manager-panel{
+.direction-manager-panel{
     & button{
         margin: 0 16px;
     }

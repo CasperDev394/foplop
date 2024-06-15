@@ -1,6 +1,6 @@
 <template>
     <div class="lk-container-page">
-        <AdminCourtDialog @update-data="updateTable" ref="adminCourtDialog"/>
+        <AdminCategoryDialog @update-data="updateTable" ref="adminCategoryDialog" />
         <div class="table-manager-panel">
             <FopButton
                 fop_type="primary"
@@ -8,7 +8,7 @@
             >
                 <font-awesome-icon :icon="['fas', 'fa-lines-leaning']"  />
                 &nbsp;&nbsp;
-                Добавить суд
+                Добавить категорию
             </FopButton>
         </div>
         <data-table
@@ -24,7 +24,8 @@
             <template #header-name="header">
                 <div class="filter-column">
                     {{ header.text }}
-                    <div class="filter-input"><n-config-provider :theme-overrides="themeOverrides">
+                    <div class="filter-input">
+                        <n-config-provider :theme-overrides="themeOverrides">
                             <n-input
                                 style="width: 300px"
                                 placeholder="поиск..."
@@ -35,7 +36,6 @@
                     </div>
                 </div>
             </template>
-
 
             <template #item-name="item">
                 <p class="text-table-big">{{item.name}}</p>
@@ -56,11 +56,10 @@
 <script setup>
 import DataTable from "vue3-easy-data-table";
 import {computed, ref, watch} from "vue";
-import {useCourtsStore} from "@/stores/admin/courts.ts";
+import {useCategoriesStore} from "@/stores/admin/categories.ts";
 import themeOverrides from "@/mixins/themeOverrides.js";
 
-
-const adminCourtDialog = ref();
+const adminCategoryDialog = ref();
 const nameCriteria = ref('');
 const items = ref([]);
 const loading = ref(true)
@@ -79,11 +78,11 @@ const filterOptions = computed(() => {
     return filterOptionsArray;
 })
 
-useCourtsStore().getCourts()
+useCategoriesStore().getCategories()
 watch(
-    [useCourtsStore()],
+    [useCategoriesStore()],
     () => {
-        items.value = useCourtsStore().$state.data
+        items.value = useCategoriesStore().$state.data
         loading.value = false
     },
     { deep: true }
@@ -92,14 +91,16 @@ watch(
 
 
 const openDialogCreate = () =>{
-    adminCourtDialog.value.show()
+    adminCategoryDialog.value.show()
 }
 const openDialogEdit = (item) =>{
-    adminCourtDialog.value.show(item)
+    adminCategoryDialog.value.show(item)
 }
 const updateTable = () => {
-    useCourtsStore().getCourts()
+    useCategoriesStore().getCategories()
 }
+
+
 
 </script>
 <style lang="scss" scoped>

@@ -1,26 +1,40 @@
 <template>
     <fop-dialog
         ref="dialog"
-        :id="'AdminCourt'"
+        :id="'AdminCategory'"
         @hidden="resetData"
     >
         <fieldset>
-            <legend>Суд</legend>
+            <legend>Категория</legend>
 
             <n-config-provider style="margin-bottom: 32px; margin-top: 16px" :theme-overrides="themeOverrides">
                 <n-input
                     style="max-width: 90%"
                     placeholder="Название"
                     size="large"
-                    v-model:value="court.name"
+                    v-model:value="category.name"
 
                     required
+                />
+                <n-select
+                    style="width: 300px"
+                    placeholder="Направление"
+                    filterable
+                    clearable
+                    v-model:value="category.direction"
+                    :options="[
+                                    {name:'', value:''},
+                                    ...directions?directions:[]
+                                ]"
+                    label-field="name"
+                    value-field="name_slug"
+                    size="large"
                 />
             </n-config-provider>
 
         </fieldset>
         <template #footer>
-            <div class="court-manager-panel">
+            <div class="category-manager-panel">
                 <fop-button
                     fop_type="primary"
                     @click="save"
@@ -30,7 +44,7 @@
                     Сохранить
                 </fop-button>
                 <fop-button
-                    v-if="court.id"
+                    v-if="category.id"
                     fop_type="delete"
                     @click="remove"
                 >
@@ -45,30 +59,42 @@
 <script setup>
 import FopDialog from "../base/FopDialog.vue";
 import themeOverrides from "@/mixins/themeOverrides.js";
-import {ref} from "vue";
+import {ref, watch} from "vue";
 import {useVuelidate} from "@vuelidate/core";
 import {helpers, required} from "@vuelidate/validators";
+import {useDirectionsStore} from "@/stores/admin/directions.ts";
 
 const dialog = ref(null)
 
-const court = ref({
+const directions = ref(null)
+
+useDirectionsStore().getDirections()
+watch(
+    [useDirectionsStore()],
+    () => {
+        directions.value = useDirectionsStore().$state.data
+    },
+    { deep: true }
+)
+
+const category = ref({
     id: null,
     name: '',
 })
 
 const rules = {
-    court:{
+    category:{
         name: {
             required: helpers.withMessage('Обязательное поле', required)
         },
     }
 }
 
-const validator = useVuelidate(rules, {court})
+const validator = useVuelidate(rules, {category})
 const emit = defineEmits(['updateData'])
 
 const resetData = () => {
-    court.value = {
+    category.value = {
         id: null,
         name: '',
     }
@@ -78,23 +104,23 @@ const save = () => {
     if (validator.value.$silentErrors.length) {
         return;
     }
-    if (court.value.id) {
-        axios.post("/admin/courts/" + court.value.name_slug + '/update', court.value)
+    if (category.value.id) {
+        axios.post("/admin/categories/" + category.value.name_slug + '/update', category.value)
     } else {
-        axios.post("/admin/courts/create", court.value)
+        axios.post("/admin/categories/create", category.value)
     }
     hide()
 }
 
 const remove = () => {
-    axios.delete("/admin/courts/" + court.value.name_slug + '/delete')
+    axios.delete("/admin/categories/" + category.value.name_slug + '/delete')
     hide()
 }
 
 const show = (item = null) => {
     dialog.value?.show()
     if(item){
-        court.value = item
+        category.value = item
     }
 }
 const hide = () => {
@@ -108,7 +134,7 @@ defineExpose({ show, hide });
 <style lang="scss" scoped>
 @import '/resources/sass/_variables.scss';
 
-.court-manager-panel{
+.category-manager-panel{
     & button{
         margin: 0 16px;
     }

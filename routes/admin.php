@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\CourtsController;
 use App\Http\Controllers\Admin\DebtorsController;
+use App\Http\Controllers\Admin\DirectionsController;
 use App\Http\Controllers\Admin\SlotsController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,13 +42,32 @@ Route::prefix('debtors')->group(function () {
 });
 
 Route::prefix('courts')->group(function () {
-   Route::view('/', 'admin.courts.list');
-   Route::get('getList', [CourtsController::class, 'getList']);
+    Route::view('/', 'admin.courts.list');
+    Route::get('getList', [CourtsController::class, 'getList']);
 
     Route::post('create', [CourtsController::class, 'create']);
 
     Route::post('{court:name_slug}/update', [CourtsController::class, 'update']);
     Route::delete('{court:name_slug}/delete', [CourtsController::class, 'delete']);
+});
 
 
+Route::prefix('directions')->group(function () {
+    Route::view('/', 'admin.directions.list');
+    Route::get('getList', [DirectionsController::class, 'getList']);
+
+    Route::post('create', [DirectionsController::class, 'create']);
+
+    Route::post('{direction:name_slug}/update', [DirectionsController::class, 'update']);
+    Route::delete('{direction:name_slug}/delete', [DirectionsController::class, 'delete']);
+});
+
+Route::prefix('categories')->group(function () {
+    Route::view('/', 'admin.categories.list');
+    Route::get('getList', [CategoriesController::class, 'getList']);
+
+    Route::post('create', [CategoriesController::class, 'create']);
+
+    Route::post('{category:name_slug}/update', [CategoriesController::class, 'update']);
+    Route::delete('{category:name_slug}/delete', [CategoriesController::class, 'delete']);
 });

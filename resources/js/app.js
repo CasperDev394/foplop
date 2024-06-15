@@ -67,6 +67,10 @@ import AdminDebtors from './pages/admin/debtors/Debtors.vue';
 import AdminDebtor from './pages/admin/debtors/Debtor.vue';
 import AdminCourts from './pages/admin/Courts.vue';
 import AdminCourtDialog from './components/dialogs/AdminCourt.vue';
+import AdminDirections from './pages/admin/Directions.vue';
+import AdminDirectionDialog from './components/dialogs/AdminDirection.vue';
+import AdminCategories from './pages/admin/Categories.vue';
+import AdminCategoryDialog from './components/dialogs/AdminCategory.vue';
 
 import Sidebar from './components/Sidebar.vue';
 import HeaderApp from './components/core/Header.vue';
@@ -110,6 +114,10 @@ app
     .component('AdminDebtor', AdminDebtor)
     .component('AdminCourts', AdminCourts)
     .component('AdminCourtDialog', AdminCourtDialog)
+    .component('AdminDirections', AdminDirections)
+    .component('AdminDirectionDialog', AdminDirectionDialog)
+    .component('AdminCategories', AdminCategories)
+    .component('AdminCategoryDialog', AdminCategoryDialog)
 
     .component('Sidebar', Sidebar)
     .component('HeaderApp', HeaderApp)

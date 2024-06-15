@@ -21,7 +21,20 @@
             @click-row="openPageEdit"
             table-class-name="yolo-table customize-table"
         >
-
+            <template #header-name="header">
+                <div class="filter-column">
+                    {{ header.text }}
+                    <div class="filter-input"><n-config-provider :theme-overrides="themeOverrides">
+                        <n-input
+                            style="width: 300px"
+                            placeholder="поиск..."
+                            size="small"
+                            v-model:value="nameCriteria"
+                        />
+                    </n-config-provider>
+                    </div>
+                </div>
+            </template>
 
 
             <template #item-name="item">
@@ -44,15 +57,13 @@
 import DataTable from "vue3-easy-data-table";
 import {computed, ref, watch} from "vue";
 import {useDebtorsStore} from "@/stores/admin/debtors.ts";
+import themeOverrides from "@/mixins/themeOverrides.js";
 
 const nameCriteria = ref('');
 const items = ref([]);
 const loading = ref(true)
 const headers = ref([
     { text: "ФИО", value: "name" },
-    // { text: "Преподаватель", value: "teacher", width: 450 },
-    // { text: "", value: "countStudents", width: 70},
-    // { text: "Статус", value: "published", width: 200},
 ]);
 
 const filterOptions = computed(() => {
