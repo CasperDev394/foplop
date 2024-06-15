@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Resources\Admin;
+
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class SlotResource extends JsonResource
+class BrokerResource extends JsonResource
 {
     public static $wrap = null;
     public function toArray($request): array
@@ -12,9 +13,9 @@ class SlotResource extends JsonResource
             'id'=>$this->resource->id,
             'name'=>$this->resource->name,
             'name_slug'=>$this->resource->name_slug,
-            'published'=>$this->resource->published,
-            'debtor'=>$this->resource->debtor,
-            'court_id'=>$this->resource->court_id,
+            'site'=>$this->resource->site,
+            'img'=>$this->resource->img,
+            'email'=>$this->user->email,
         ];
     }
 }

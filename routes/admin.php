@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BrokersController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\CourtsController;
 use App\Http\Controllers\Admin\DebtorsController;
@@ -70,4 +71,18 @@ Route::prefix('categories')->group(function () {
 
     Route::post('{category:name_slug}/update', [CategoriesController::class, 'update']);
     Route::delete('{category:name_slug}/delete', [CategoriesController::class, 'delete']);
+});
+
+Route::prefix('brokers')->group(function () {
+    Route::view('/', 'admin.brokers.list');
+    Route::get('getList', [BrokersController::class, 'getList']);
+
+    Route::view('create', 'admin.brokers.item');
+    Route::post('create', [BrokersController::class, 'create']);
+
+    Route::get('{broker:name_slug}/read', [BrokersController::class, 'read']);
+    Route::post('{broker:name_slug}/update', [BrokersController::class, 'update']);
+    Route::delete('{broker:name_slug}/delete', [BrokersController::class, 'delete']);
+
+    Route::view('{broker:name_slug}', 'admin.brokers.item');
 });

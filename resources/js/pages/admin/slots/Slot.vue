@@ -29,7 +29,49 @@
                                     ...debtors?debtors:[]
                                 ]"
                             label-field="name"
+                            value-field="name_slug"
+                            size="small"
+                        />
+                        <n-select
+                            style="width: 300px"
+                            placeholder="Суд"
+                            filterable
+                            clearable
+                            v-model:value="lot.court_id"
+                            :options="[
+                                    {name:'', value:''},
+                                    ...courts?courts:[]
+                                ]"
+                            label-field="name"
                             value-field="id"
+                            size="small"
+                        />
+                        <n-select
+                            style="width: 300px"
+                            placeholder="Категория"
+                            filterable
+                            clearable
+                            v-model:value="lot.category"
+                            :options="[
+                                    {name:'', value:''},
+                                    ...categories?categories:[]
+                                ]"
+                            label-field="name"
+                            value-field="name_slug"
+                            size="small"
+                        />
+                        <n-select
+                            style="width: 300px"
+                            placeholder="Брокер"
+                            filterable
+                            clearable
+                            v-model:value="lot.broker"
+                            :options="[
+                                    {name:'', value:''},
+                                    ...brokers?brokers:[]
+                                ]"
+                            label-field="name"
+                            value-field="name_slug"
                             size="small"
                         />
                     </n-config-provider>
@@ -74,10 +116,16 @@ import {ref, watch} from "vue";
 import themeOverrides from "@/mixins/themeOverrides.js";
 import {useLotStore} from "@/stores/admin/lot.ts";
 import {useDebtorsStore} from "@/stores/admin/debtors.ts";
+import {useCourtsStore} from "@/stores/admin/courts.ts";
+import {useCategoriesStore} from "@/stores/admin/categories.ts";
+import {useBrokersStore} from "@/stores/admin/brokers.ts";
 
 
 
 const debtors = ref(null)
+const courts = ref(null)
+const categories = ref(null)
+const brokers = ref(null)
 const editable = ref(false);
 const slug = window.location.href.split('/').pop();
 const rules = {
@@ -93,6 +141,33 @@ watch(
     [useDebtorsStore()],
     () => {
         debtors.value = useDebtorsStore().$state.data
+    },
+    { deep: true }
+)
+
+useCourtsStore().getCourts()
+watch(
+    [useCourtsStore()],
+    () => {
+        courts.value = useCourtsStore().$state.data
+    },
+    { deep: true }
+)
+
+useCategoriesStore().getCategories()
+watch(
+    [useCategoriesStore()],
+    () => {
+        categories.value = useCategoriesStore().$state.data
+    },
+    { deep: true }
+)
+
+useBrokersStore().getBrokers()
+watch(
+    [useBrokersStore()],
+    () => {
+        brokers.value = useBrokersStore().$state.data
     },
     { deep: true }
 )

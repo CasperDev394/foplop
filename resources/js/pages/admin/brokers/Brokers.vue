@@ -7,7 +7,7 @@
             >
                 <font-awesome-icon :icon="['fas', 'fa-lines-leaning']"  />
                 &nbsp;&nbsp;
-                Добавить торги
+                Добавить Брокера
             </FopButton>
         </div>
         <data-table
@@ -54,9 +54,8 @@
 </template>
 <script setup>
 import DataTable from "vue3-easy-data-table";
-
 import {computed, ref, watch} from "vue";
-import {useSlotsStore} from "@/stores/admin/slots.ts";
+import {useBrokersStore} from "@/stores/admin/brokers.ts";
 import themeOverrides from "@/mixins/themeOverrides.js";
 
 const nameCriteria = ref('');
@@ -77,21 +76,24 @@ const filterOptions = computed(() => {
     return filterOptionsArray;
 })
 
-useSlotsStore().getSlots()
+useBrokersStore().getBrokers()
 watch(
-    [useSlotsStore()],
+    [useBrokersStore()],
     () => {
-        items.value = useSlotsStore().$state.data
+        items.value = useBrokersStore().$state.data
         loading.value = false
     },
     { deep: true }
 )
 
+
+
+
 const openPageCreate = () =>{
-    window.location.href = "/admin/slots/create"
+    window.location.href = "/admin/brokers/create"
 }
 const openPageEdit = (item) =>{
-    window.location.href = "/admin/slots/"+item.name_slug
+    window.location.href = "/admin/brokers/"+item.name_slug
 }
 </script>
 <style lang="scss" scoped>

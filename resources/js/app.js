@@ -71,6 +71,8 @@ import AdminDirections from './pages/admin/Directions.vue';
 import AdminDirectionDialog from './components/dialogs/AdminDirection.vue';
 import AdminCategories from './pages/admin/Categories.vue';
 import AdminCategoryDialog from './components/dialogs/AdminCategory.vue';
+import AdminBrokers from './pages/admin/brokers/Brokers.vue';
+import AdminBroker from './pages/admin/brokers/Broker.vue';
 
 import Sidebar from './components/Sidebar.vue';
 import HeaderApp from './components/core/Header.vue';
@@ -118,6 +120,8 @@ app
     .component('AdminDirectionDialog', AdminDirectionDialog)
     .component('AdminCategories', AdminCategories)
     .component('AdminCategoryDialog', AdminCategoryDialog)
+    .component('AdminBrokers', AdminBrokers)
+    .component('AdminBroker', AdminBroker)
 
     .component('Sidebar', Sidebar)
     .component('HeaderApp', HeaderApp)
