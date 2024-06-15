@@ -115,3 +115,31 @@ h2 {
         border-bottom: solid $color-primary-negate 1px;
     }
 }
+
+fieldset
+{
+    border: solid silver 1px;
+    border-radius: 2px;
+    padding: 10px;
+
+    & h2{
+        border-left: solid rgb(249, 188, 32) 2px;
+        color: #515151;
+        font-size: 23px;
+        padding: 6px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 20px;
+    }
+}
+
+legend {
+    width: auto;
+    float: inherit;
+    text-decoration: none;
+    font-family: revert;
+    color: #515151;
+    font-size: 18px;
+    padding: 6px 20px;
+}

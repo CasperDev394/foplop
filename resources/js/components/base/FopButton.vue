@@ -85,23 +85,23 @@ const props = defineProps({
             }
         }
     }
-    /*
+
     &.delete {
         background-color: #ffffff;
         border: solid #8c8b8b 1px;
-        color: $color-text-gray-1;
+        color: $text-black;
 
         transition: 0.2s;
 
         &:hover{
-            background-color: $color-delete;
+            background-color: $text-gray-1;
             color: white;
             opacity: 0.7;
         }
 
     }
 
-     */
+
   &.big{
     height: 40px;
     font-size: 16px;

@@ -13,11 +13,11 @@ class DebtorsController extends Controller
 {
     public function getList(): ResourceCollection
     {
-        $slots = Debtor::query()
+        $debtors = Debtor::query()
             ->orderByDesc('created_at')
             ->get();
 
-        return DebtorResource::collection($slots);
+        return DebtorResource::collection($debtors);
     }
 
     public function read(Debtor $debtor): DebtorResource

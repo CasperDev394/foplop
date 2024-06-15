@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CourtsController;
 use App\Http\Controllers\Admin\DebtorsController;
 use App\Http\Controllers\Admin\SlotsController;
 use Illuminate\Support\Facades\Route;
@@ -36,4 +37,16 @@ Route::prefix('debtors')->group(function () {
     Route::delete('{debtor:name_slug}/delete', [DebtorsController::class, 'delete']);
 
     Route::view('{debtor:name_slug}', 'admin.debtors.item');
+});
+
+Route::prefix('courts')->group(function () {
+   Route::view('/', 'admin.courts.list');
+   Route::get('getList', [CourtsController::class, 'getList']);
+
+    Route::post('create', [CourtsController::class, 'create']);
+
+    Route::post('{court:name_slug}/update', [CourtsController::class, 'update']);
+    Route::delete('{court:name_slug}/delete', [CourtsController::class, 'delete']);
+
+
 });

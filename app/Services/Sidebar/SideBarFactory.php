@@ -25,6 +25,9 @@ class SideBarFactory
         ['text' => 'Должники', 'href' => '/debtors', 'icon' => '',
             'perm'=>['ADMIN']],
 
+        ['text' => 'Суды', 'href' => '/courts', 'icon' => '',
+            'perm'=>['ADMIN']],
+
 
     ];
 

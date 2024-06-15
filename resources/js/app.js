@@ -17,6 +17,7 @@ import {
     faUserSecret,
     faPaperclip,
     faXmark,
+    faCheck,
     faTrash,
     faArrowRight,
     faPaperPlane,
@@ -33,6 +34,7 @@ import {
 library.add(faUserSecret)
 library.add(faXmark)
 library.add(faTrash)
+library.add(faCheck)
 library.add(faCheckDouble)
 library.add(faPaperPlane)
 library.add(faArrowRight)
@@ -63,6 +65,8 @@ import AdminSlots from './pages/admin/slots/Slots.vue';
 import AdminSlot from './pages/admin/slots/Slot.vue';
 import AdminDebtors from './pages/admin/debtors/Debtors.vue';
 import AdminDebtor from './pages/admin/debtors/Debtor.vue';
+import AdminCourts from './pages/admin/Courts.vue';
+import AdminCourtDialog from './components/dialogs/AdminCourt.vue';
 
 import Sidebar from './components/Sidebar.vue';
 import HeaderApp from './components/core/Header.vue';
@@ -73,6 +77,7 @@ import HeaderLk from './components/lk/core/Header.vue';
 
 
 import FopButton from './components/base/FopButton.vue';
+import FopDialog from './components/base/FopDialog.vue';
 
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -103,6 +108,8 @@ app
     .component('AdminSlot', AdminSlot)
     .component('AdminDebtors', AdminDebtors)
     .component('AdminDebtor', AdminDebtor)
+    .component('AdminCourts', AdminCourts)
+    .component('AdminCourtDialog', AdminCourtDialog)
 
     .component('Sidebar', Sidebar)
     .component('HeaderApp', HeaderApp)
@@ -111,6 +118,7 @@ app
     .component('HeaderLk', HeaderLk)
 
     .component('FopButton', FopButton)
+    .component('FopDialog', FopDialog)
     .component('font-awesome-icon', FontAwesomeIcon)
     .component('data-table', Vue3EasyDataTable)
 

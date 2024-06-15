@@ -18,7 +18,7 @@ class DebtorServices
 
     public function create(array $data): Debtor
     {
-        $name_slug = Str::nameSlug([$data['first_name'], $data['last_name']??'', $data['fathers_name']??''], Slot::class);
+        $name_slug = Str::nameSlug([$data['first_name'], $data['last_name']??'', $data['fathers_name']??''], Debtor::class);
 
         $this->debtor = new Debtor();
         $this->debtor->fill(array_merge($data, ['name_slug'=>$name_slug]));
